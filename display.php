@@ -16,7 +16,7 @@
 <?php
 require "dbconnect.php";
 
-if(isset($_POST['displaySend'])){
+if (isset($_POST['displaySend'])) {
     echo '<table class="table my-2 m-1" id="myTable">
     <thead>
     <tr>
@@ -33,29 +33,29 @@ if(isset($_POST['displaySend'])){
   </tr>
   </thead>';
 
-  $sql = "SELECT * FROM `faculty`";
-  $result = mysqli_query($conn,$sql);
-  $i = 1;
-  while($row = mysqli_fetch_assoc($result)){
-  echo "<tr>
-  <th scope='row'>".$i++."</th>
-  <td>".$row['Title']."</td>
-  <td>".$row['Name']."</td>
-  <td>".$row['father name']."</td>
-  <td>".$row['Surname']."</td>
-  <td>".$row['Email_ID']."</td>
-  <td>".$row['Department']."</td>
-  <td>".$row['Address']."</td>
-  <td>".$row['MobileNumber']."</td>
-  <td><button class='btn btn-sm btn-primary' style='--bs-btn-focus-shadow-rgb:none;' onclick='getDetails(".$row['No'].")'>Edit</button> <button class='btn btn-sm btn-danger' style='--bs-btn-focus-shadow-rgb:none;' onclick='DeleteUser(".$row['No'].")'>Delete</button></td>
+    $sql    = "SELECT * FROM `faculty`";
+    $result = mysqli_query($conn, $sql);
+    $i      = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+  <th scope='row'>" . $i++ . "</th>
+  <td>" . $row['Title'] . "</td>
+  <td>" . $row['Name'] . "</td>
+  <td>" . $row['father_name'] . "</td>
+  <td>" . $row['Surname'] . "</td>
+  <td>" . $row['Email_ID'] . "</td>
+  <td>" . $row['Department'] . "</td>
+  <td>" . $row['Address'] . "</td>
+  <td>" . $row['MobileNumber'] . "</td>
+  <td><button class='btn btn-sm btn-primary' style='--bs-btn-focus-shadow-rgb:none;' onclick='getDetails(" . json_encode($row) . ")'>Edit</button> <button class='btn btn-sm btn-danger' style='--bs-btn-focus-shadow-rgb:none;' onclick='DeleteUser(" . $row['No'] . ")'>Delete</button></td>
 </tr>";
-  }
+    }
 }
 ?>
 
 </table>
 
-<!-- custom script link 
+<!-- custom script link
 <button class='btn btn-sm btn-primary' style='--bs-btn-focus-shadow-rgb:none;' data-bs-toggle='modal' data-bs-target='#updatexampleModal' onclick='GetDetails(".$row['No'].")'>Edit</button> <button class='btn btn-sm btn-danger' style='--bs-btn-focus-shadow-rgb:none;' onclick='DeleteUser(".$row['No'].")'>Delete</button></td>
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
 <!--
@@ -63,7 +63,7 @@ $(document).ready( function () {
     $('#myTable').DataTable();
 } );
 -->
-   
+
 </body>
 
 </html>
